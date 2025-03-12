@@ -17,22 +17,69 @@ export default function BackOffice() {
   }, []);
 
   return (
-    <div className="p-6 max-w-lg mx-auto bg-white shadow-md rounded-lg">
-      <h2 className="text-xl font-bold mb-4">Lista de Participantes</h2>
-      <ul className="list-disc pl-4">
-        {participantes.length > 0 ? (
-          participantes.map((p, index) => (
-            <li key={index} className="mb-2">
-              {p.nombre} <br /> {p.apellido_paterno} <br /> ({p.tipo_asistente})
-              <br />
-              {p.ciudad_evento} <br /> {p.correo_electronico} <br />
-              {p.tipo_asistente} <br /> {p.codigo_confirmacion}
-            </li>
-          ))
-        ) : (
-          <p>No hay participantes registrados.</p>
-        )}
-      </ul>
+    <div className="p-6 max-w-5xl mx-auto bg-white shadow-md rounded-lg">
+      <h2 className="text-2xl font-bold mb-4 text-center">
+        Lista de Participantes
+      </h2>
+
+      {participantes.length > 0 ? (
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-300">
+            <thead className="bg-gray-200">
+              <tr>
+                <th className="border border-gray-300 px-4 py-2">Nombre</th>
+                <th className="border border-gray-300 px-4 py-2">Apellido</th>
+                <th className="border border-gray-300 px-4 py-2">Correo</th>
+                <th className="border border-gray-300 px-4 py-2">Cargo</th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Ciudad Origen
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Ciudad Evento
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Tipo Asistente
+                </th>
+                <th className="border border-gray-300 px-4 py-2">
+                  Código Confirmación
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {participantes.map((p, index) => (
+                <tr key={index} className="text-center odd:bg-gray-100">
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.nombre}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.apellido_paterno} {p.apellido_materno}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.correo_electronico}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.cargo}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.ciudad_origen}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.ciudad_evento}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.tipo_asistente}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {p.codigo_confirmacion}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p className="text-center mt-4">No hay participantes registrados.</p>
+      )}
     </div>
   );
 }
