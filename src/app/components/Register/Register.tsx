@@ -43,12 +43,12 @@ export default function Register() {
     <div className="p-6 max-w-md mx-auto bg-white shadow-md rounded-lg">
       <h2 className="text-xl font-bold mb-4">Registro de Participante</h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        {Object.keys(form).map((key) => (
+        {(Object.keys(form) as Array<keyof IParticipante>).map((key) => (
           <input
             key={key}
             type="text"
             name={key}
-            value={(form as any)[key]} // Para evitar errores de TS con `Object.keys`
+            value={form[key]}
             onChange={handleChange}
             placeholder={key.replace("_", " ")}
             className="p-2 border rounded-md"
