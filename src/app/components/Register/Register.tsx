@@ -11,6 +11,7 @@ export default function Register() {
     apellido_paterno: "",
     apellido_materno: "",
     correo_electronico: "",
+    codigo_confirmacion: "",
     cargo: "",
     ciudad_origen: "",
     ciudad_evento: "",
